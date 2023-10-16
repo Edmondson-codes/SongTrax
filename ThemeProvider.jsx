@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { lightTheme, darkTheme, colors } from './styles';
-import {Dimensions} from 'react-native';
+import {Dimensions, Appearance} from 'react-native';
 
 
 export const ThemeContext = React.createContext();
@@ -16,6 +16,13 @@ export const ThemeProvider = ({ children }) => {
     }
   };
 
+  // set default theme
+  const deviceTheme = Appearance.getColorScheme(); 
+
+  if (deviceTheme === 'dark') {
+    toggleTheme()
+  }
+
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 
@@ -25,7 +32,8 @@ export const ThemeProvider = ({ children }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 10,
-        backgroundColor: theme.bgColor
+        backgroundColor: theme.bgColor,
+        width: width
     },
     heading: {
         fontSize: 30,
@@ -48,6 +56,16 @@ export const ThemeProvider = ({ children }) => {
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center", 
+    },
+    bigPin: {
+        width: 45,
+        height: 80,
+    },
+    flexSpread: {
+        flexDirection: "row", 
+        justifyContent: 'space-evenly', 
+        alignItems: "center", 
+        width: width
     },
     locationHeading: {
         fontSize: 20,
@@ -121,7 +139,6 @@ export const ThemeProvider = ({ children }) => {
         marginTop: -(height / 12)
     }
 }
-
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, styles }}>

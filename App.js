@@ -1,12 +1,14 @@
+import React, { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { ThemeProvider } from './ThemeProvider';
+import { ThemeProvider, ThemeContext  } from './ThemeProvider';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RatingScreen from './components/RatingsScreen';
 import MapScreen from "./components/MapScreen"
 import ProfileScreen from "./components/ProfileScreen"
 import { NavigationContainer } from '@react-navigation/native';
 import TabBar from './components/TabBar';
+import {Dimensions} from 'react-native';
 
 // TODO: get image picker and map code from contacts
 
@@ -18,17 +20,20 @@ import TabBar from './components/TabBar';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  // const { styles } = useContext(ThemeContext);
+
+  const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
+
   return (
     <ThemeProvider>
-      <NavigationContainer>
+      <NavigationContainer  style={{flexDirection: "row", justifyContent: 'center', alignItems: "center"}}>
       
-          <SafeAreaView style={styles.container}>
-            <Text>Open up App.js to start working on your app! Yay! </Text>
-            <StatusBar style="auto" />
-            <Tab.Navigator tabBar={props => <TabBar key={props} {...props} />}>
+          <SafeAreaView style={styles.container} >
+            <Tab.Navigator title={false} tabBar={props => <TabBar key={props} {...props} />}>
               <Tab.Screen name="Map" component={MapScreen} />
               <Tab.Screen name="Home" component={RatingScreen} />
-              <Tab.Screen name="Settings" component={ProfileScreen} />
+              <Tab.Screen name="Edit Profile" component={ProfileScreen} />
             </Tab.Navigator>
           </SafeAreaView>
         
