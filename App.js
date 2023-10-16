@@ -25,7 +25,7 @@ export default function App() {
           <SafeAreaView style={styles.container}>
             <Text>Open up App.js to start working on your app! Yay! </Text>
             <StatusBar style="auto" />
-            <Tab.Navigator tabBar={props => <TabBar key={props.name} {...props} />}>
+            <Tab.Navigator tabBar={props => <TabBar key={props} {...props} />}>
               <Tab.Screen name="Map" component={MapScreen} />
               <Tab.Screen name="Home" component={RatingScreen} />
               <Tab.Screen name="Settings" component={ProfileScreen} />
