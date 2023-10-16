@@ -26,7 +26,7 @@ const RatingScreen = ({rating, name, date}) => {
                 fractions={1}
                 startingValue={rating}
                 readonly={true}
-                imageSize={5}
+                imageSize={50000}
                 // style={styles.ratingComponent}
             />
             <Text>          </Text>

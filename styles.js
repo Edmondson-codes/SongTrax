@@ -1,6 +1,6 @@
 // Light and Dark colour schemes
 export const colors = {
-	purpleColorLighter: "#A42DE8",
+	purpleColor: "#A42DE8",
 	blueColorLighter: "#318AFF",
 	blueColorDarker: "#2D3DE8",
 	blackColorTranslucentLess: "rgba(0,0,0,0.35)",
@@ -22,7 +22,7 @@ export const colors = {
 };
 
 export const lightTheme = {
-    purpleColorLighter: "#A42DE8",
+    purpleColor: "#A42DE8",
 	blueColor: "#318AFF",
     blueColorLighter: "#318AFF",
 	blueColorDarker: "#2D3DE8",
